@@ -23,7 +23,7 @@ namespace sap_soap
         {
             var httpClient = new HttpClient
             {
-                BaseAddress = new Uri("http://ec2-3-218-84-176.compute-1.amazonaws.com:5000/graphql")
+                BaseAddress = new Uri("http://ec2-3-227-32-190.compute-1.amazonaws.com/graphql")
             };
 
 
@@ -57,22 +57,34 @@ namespace sap_soap
             var error = responseObj.data.ExistUser.error; // response
             var user = responseObj.data.ExistUser.user; // response
 
-            var id = user.id;
-            var name = user.name;
-            var lastname = user.lastName;
-            var picture = user.picture;
-            var emailI = user.email;
-            var country = user.country;
-            var username = user.userName;
+            if(user != null )
+            {
+                var id = user.id;
+                var name = user.name;
+                var lastname = user.lastName;
+                var picture = user.picture;
+                var emailI = user.email;
+                var country = user.country;
+                var username = user.userName;
 
-            ViewModelResponse ans = new ViewModelResponse
+                ViewModelResponse ans = new ViewModelResponse
+                {
+                    Error = error,
+                    Response = responseAns,
+                    User = new ViewModelUser { Id = id, Name = name, LastName = lastname, Picture = picture, Email = emailI, Country = country, UserName = username }
+                };
+
+                return ans;
+            }
+
+            ViewModelResponse ans2 = new ViewModelResponse
             {
                 Error = error,
                 Response = responseAns,
-                User = new ViewModelUser { Id = id, Name = name, LastName = lastname, Picture = picture, Email = emailI, Country = country, UserName = username }
+                User = null
             };
 
-            return ans;
+            return ans2;
         }
     }
 
