@@ -16,5 +16,9 @@ namespace sap_soap
 
         [OperationContract]
         Task<ViewModelResponse> ExistUser(string email);
+
+        [OperationContract]
+        Task<string> GetMessages(string a);
+
     }
 }

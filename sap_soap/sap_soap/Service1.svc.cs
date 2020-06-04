@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
+
 namespace sap_soap
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
@@ -84,7 +85,43 @@ namespace sap_soap
                 User = null
             };
 
+            
+
+
             return ans2;
+        }
+
+        public async Task<string> GetMessages(string a)
+        {
+
+            var httpClient2 = new HttpClient
+            {
+                BaseAddress = new Uri("http://e6623909413f.ngrok.io/rentmate-chats-soap?wsdl")
+            };
+
+
+            string requestXml = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:soap=\"http://SOAP/\">" +
+                      "<soapenv:Header/>\r\n" +
+                      "<soapenv:Body> \r\n" +
+                         "<soap:getAllMessages/>\r\n" +
+                       "</soapenv:Body>\r\n" +
+                    "</soapenv:Envelope>\r\n";
+
+            var request2 = new HttpRequestMessage
+            {
+                Method = HttpMethod.Post,
+                Content = new StringContent(requestXml, Encoding.UTF8, "text/xml"),
+
+            };
+
+
+            using (var response = await httpClient2.SendAsync(request2))
+            {
+                response.EnsureSuccessStatusCode();
+
+                var responseString = await response.Content.ReadAsStringAsync();
+                return responseString;
+            }
         }
     }
 
