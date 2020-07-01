@@ -186,6 +186,7 @@
     <None Include="Properties\PublishProfiles\sapsoap - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\sapsoap - ReadOnly - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\sapsoap - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\sapsoap20200630205522.pubxml" />
     <None Include="Properties\PublishProfiles\soaphd.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

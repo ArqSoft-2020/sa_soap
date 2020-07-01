@@ -24,7 +24,7 @@ namespace sap_soap
         {
             var httpClient = new HttpClient
             {
-                BaseAddress = new Uri("http://ec2-3-227-32-190.compute-1.amazonaws.com/graphql")
+                BaseAddress = new Uri("http://ec2-54-147-224-240.compute-1.amazonaws.com:7000/graphql")
             };
 
 
